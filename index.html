@@ -1,66 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>For You 🌹</title>
 
+  <!-- Handwritten-style font -->
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      text-align: center;
+      height: 100vh;
       overflow: hidden;
+      font-family: "Segoe UI", sans-serif;
 
-      /* Beautiful romantic background */
+      /* Pastel green background */
       background: linear-gradient(
         180deg,
-        #fde2e4 0%,
-        #f8cdda 40%,
-        #d8b4e2 70%,
-        #b5838d 100%
+        #e9f5ef 0%,
+        #d3efe2 45%,
+        #b7e4c7 100%
       );
     }
 
     .screen {
       display: none;
-      padding: 50px 30px;
-      color: #3a1c2a;
+      height: 100%;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+      box-sizing: border-box;
+      color: #1b4332;
     }
 
     .active {
-      display: block;
+      display: flex;
+      flex-direction: column;
     }
 
     h1 {
-      font-weight: normal;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 160px;
+      margin-bottom: 25px;
     }
 
     button {
-      padding: 12px 26px;
+      padding: 12px 28px;
       font-size: 18px;
-      margin: 15px;
+      margin: 16px 10px;
       border: none;
-      border-radius: 8px;
+      border-radius: 30px;
       cursor: pointer;
     }
 
     .primary {
-      background: #ff4d6d;
+      background: #40916c;
       color: white;
     }
 
     .no {
-      background: #6c757d;
-      color: white;
+      background: #95d5b2;
+      color: #1b4332;
       position: absolute;
+    }
+
+    /* Letter card */
+    .letter {
+      max-width: 540px;
+      margin: 10px auto 0;
+      padding: 30px 28px;
+
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 20px;
+      line-height: 1.9;
+      letter-spacing: 0.3px;
+
+      color: #1b4332;
+      text-align: center;
+      white-space: pre-line;
+
+      background: rgba(255, 255, 255, 0.38);
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
     }
 
     /* Rose animation */
     .rose {
       position: absolute;
       font-size: 26px;
-      animation: rise 5.5s ease-in infinite;
-      opacity: 0.9;
+      animation: rise 6s ease-in infinite;
+      opacity: 0.85;
       pointer-events: none;
     }
 
@@ -69,11 +104,11 @@
         transform: translateY(0) scale(0.7);
         opacity: 0;
       }
-      25% {
+      30% {
         opacity: 1;
       }
       100% {
-        transform: translateY(-700px) scale(1.1);
+        transform: translateY(-750px) scale(1.1);
         opacity: 0;
       }
     }
@@ -89,28 +124,33 @@
 
 <!-- Screen 1 -->
 <div id="s1" class="screen active">
-  <h1>Hey… sorry I took some time 💭</h1>
+  <img src="rose.png" alt="Rose">
+  <h1>Hey… sorry I took some time 🌿</h1>
   <button class="primary" onclick="next(2)">Okay</button>
 </div>
 
 <!-- Screen 2 -->
 <div id="s2" class="screen">
-  <h1>Here’s a rose for you 🌹</h1>
+  <img src="rose.png" alt="Rose">
+  <h1>This one’s for you 🌹</h1>
   <button class="primary" onclick="next(3)">Continue</button>
 </div>
 
 <!-- Screen 3 -->
 <div id="s3" class="screen">
   <h1>Will you be my Valentine? 💌</h1>
-  <button class="primary" onclick="yes()">Yes</button>
-  <button class="no" id="noBtn" onclick="moveNo()">No</button>
+  <div>
+    <button class="primary" onclick="yes()">Yes</button>
+    <button class="no" id="noBtn" onclick="moveNo()">No</button>
+  </div>
 </div>
 
 <!-- Final Screen -->
 <div id="s4" class="screen">
-  <h1>🌹</h1>
-  <p style="font-size:18px; line-height:1.6;">
-    The first day,
+  <img src="rose.png" alt="Rose">
+
+  <div class="letter">
+The first day,
 when our eyes found each other
 and you stood there in green,
 something in me surrendered.
@@ -150,8 +190,9 @@ one direction.
 Forever in love with you, Umbruu.
 Always.
 I love you.
-  </p>
-  <p style="opacity:0.75; margin-top:20px;">
+  </div>
+
+  <p style="opacity:0.65; margin-top:22px;">
     this song is just for you
   </p>
 </div>
@@ -170,8 +211,8 @@ I love you.
 
   function moveNo() {
     const btn = document.getElementById("noBtn");
-    btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
-    btn.style.top = Math.random() * (window.innerHeight - 100) + "px";
+    btn.style.left = Math.random() * (window.innerWidth - 120) + "px";
+    btn.style.top = Math.random() * (window.innerHeight - 60) + "px";
   }
 
   function yes() {
@@ -188,8 +229,8 @@ I love you.
       rose.style.left = Math.random() * window.innerWidth + "px";
       rose.style.bottom = "-40px";
       document.body.appendChild(rose);
-      setTimeout(() => rose.remove(), 5500);
-    }, 450);
+      setTimeout(() => rose.remove(), 6000);
+    }, 500);
   }
 </script>
 
