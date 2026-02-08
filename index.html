@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>For You 🌹</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+
+      /* Beautiful romantic background */
+      background: linear-gradient(
+        180deg,
+        #fde2e4 0%,
+        #f8cdda 40%,
+        #d8b4e2 70%,
+        #b5838d 100%
+      );
+    }
+
+    .screen {
+      display: none;
+      padding: 50px 30px;
+      color: #3a1c2a;
+    }
+
+    .active {
+      display: block;
+    }
+
+    h1 {
+      font-weight: normal;
+    }
+
+    button {
+      padding: 12px 26px;
+      font-size: 18px;
+      margin: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .no {
+      background: #6c757d;
+      color: white;
+      position: absolute;
+    }
+
+    /* Rose animation */
+    .rose {
+      position: absolute;
+      font-size: 26px;
+      animation: rise 5.5s ease-in infinite;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scale(0.7);
+        opacity: 0;
+      }
+      25% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-700px) scale(1.1);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Screen 1 -->
+<div id="s1" class="screen active">
+  <h1>Hey… sorry I took some time 💭</h1>
+  <button class="primary" onclick="next(2)">Okay</button>
+</div>
+
+<!-- Screen 2 -->
+<div id="s2" class="screen">
+  <h1>Here’s a rose for you 🌹</h1>
+  <button class="primary" onclick="next(3)">Continue</button>
+</div>
+
+<!-- Screen 3 -->
+<div id="s3" class="screen">
+  <h1>Will you be my Valentine? 💌</h1>
+  <button class="primary" onclick="yes()">Yes</button>
+  <button class="no" id="noBtn" onclick="moveNo()">No</button>
+</div>
+
+<!-- Final Screen -->
+<div id="s4" class="screen">
+  <h1>🌹</h1>
+  <p style="font-size:18px; line-height:1.6;">
+    The first day,
+when our eyes found each other
+and you stood there in green,
+something in me surrendered.
+
+No words.
+Just that look.
+And I knew —
+I was already yours.
+
+Your eyes did something to my heart
+I still don’t have language for.
+They melted me, quietly, completely,
+like love deciding
+it didn’t need permission.
+
+We’ve crossed storms,
+paused at doubts,
+walked through more than we ever planned.
+Still, my love for you
+burns steady,
+brighter than before.
+
+Time doesn’t scare me.
+Distance doesn’t weaken me.
+I will wait —
+through days, through lifetimes,
+until eternity learns my patience.
+
+To stand beside you,
+to choose you,
+again and again.
+
+My princess,
+this heart has only ever known
+one direction.
+
+Forever in love with you, Umbruu.
+Always.
+I love you.
+  </p>
+  <p style="opacity:0.75; margin-top:20px;">
+    this song is just for you
+  </p>
+</div>
+
+<script>
+  function next(n) {
+    show("s" + n);
+  }
+
+  function show(id) {
+    document.querySelectorAll(".screen").forEach(s =>
+      s.classList.remove("active")
+    );
+    document.getElementById(id).classList.add("active");
+  }
+
+  function moveNo() {
+    const btn = document.getElementById("noBtn");
+    btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    btn.style.top = Math.random() * (window.innerHeight - 100) + "px";
+  }
+
+  function yes() {
+    show("s4");
+    document.getElementById("music").play();
+    startRoses();
+  }
+
+  function startRoses() {
+    setInterval(() => {
+      const rose = document.createElement("div");
+      rose.className = "rose";
+      rose.innerHTML = "🌹";
+      rose.style.left = Math.random() * window.innerWidth + "px";
+      rose.style.bottom = "-40px";
+      document.body.appendChild(rose);
+      setTimeout(() => rose.remove(), 5500);
+    }, 450);
+  }
+</script>
+
+</body>
+</html>
