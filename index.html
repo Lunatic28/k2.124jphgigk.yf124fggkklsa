@@ -20,8 +20,17 @@
     color: #1b4332;
   }
 
-  .active {
+  .screen.active {
     display: block;
+  }
+
+  /* Consistent vertical placement */
+  .center-box {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   h1 {
@@ -87,22 +96,28 @@
 
 <!-- Screen 1 -->
 <div id="s1" class="screen active">
-  <h1>Hey… sorry I took some time 🌿</h1>
-  <button class="primary" onclick="showGift()">Okay</button>
+  <div class="center-box">
+    <h1>Hey… sorry I took some time 🌿</h1>
+    <button class="primary" onclick="showGift()">Okay</button>
+  </div>
 </div>
 
-<!-- Screen 2 : GIFT -->
+<!-- Screen 2 : Rose gift -->
 <div id="gift" class="screen">
-  <div id="roseHolder"></div>
-  <h1>This one’s for you 🌹</h1>
-  <button class="primary" onclick="go('s3')">Continue</button>
+  <div class="center-box">
+    <div id="roseHolder"></div>
+    <h1>This one’s for you 🌹</h1>
+    <button class="primary" onclick="go('s3')">Continue</button>
+  </div>
 </div>
 
 <!-- Screen 3 -->
 <div id="s3" class="screen">
-  <h1>Will you be my Valentine? 💌</h1>
-  <button class="primary" onclick="yes()">Yes</button>
-  <button class="no" id="noBtn" onclick="moveNo()">No</button>
+  <div class="center-box">
+    <h1>Will you be my Valentine? 💌</h1>
+    <button class="primary" onclick="yes()">Yes</button>
+    <button class="no" id="noBtn" onclick="moveNo()">No</button>
+  </div>
 </div>
 
 <!-- Final Screen -->
@@ -150,27 +165,33 @@ Always.
 I love you.
   </div>
 
-  <p style="opacity:0.6;">this song is just for you</p>
+  <p style="opacity:0.6; text-align:center;">
+    this song is just for you
+  </p>
 </div>
 
 <script>
   function go(id) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.screen').forEach(s =>
+      s.classList.remove('active')
+    );
     document.getElementById(id).classList.add('active');
   }
 
   function showGift() {
     go('gift');
 
-    // CREATE rose image ONLY HERE
+    const holder = document.getElementById("roseHolder");
+    holder.innerHTML = "";
+
     const img = document.createElement("img");
     img.src = "rose.png";
     img.style.width = "180px";
-    img.style.margin = "40px auto 25px";
+    img.style.margin = "0 auto 25px";
     img.style.display = "block";
     img.id = "giftRose";
 
-    document.getElementById("roseHolder").appendChild(img);
+    holder.appendChild(img);
   }
 
   function moveNo() {
@@ -180,7 +201,6 @@ I love you.
   }
 
   function yes() {
-    // DELETE rose if it exists
     const r = document.getElementById("giftRose");
     if (r) r.remove();
 
