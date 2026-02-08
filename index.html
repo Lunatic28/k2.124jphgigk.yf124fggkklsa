@@ -30,8 +30,8 @@
   }
 
   img {
-    width: 160px;
-    margin: 25px auto;
+    width: 180px;
+    margin: 40px auto 25px;
     display: block;
   }
 
@@ -55,7 +55,6 @@
     position: absolute;
   }
 
-  /* Letter */
   .letter {
     max-width: 560px;
     margin: 20px auto;
@@ -68,7 +67,6 @@
     white-space: pre-line;
   }
 
-  /* Roses (ONLY final screen) */
   .rose {
     position: absolute;
     font-size: 26px;
@@ -93,14 +91,13 @@
 
 <!-- Screen 1 -->
 <div id="s1" class="screen active">
-  <img src="rose.png">
   <h1>Hey… sorry I took some time 🌿</h1>
   <button class="primary" onclick="go(2)">Okay</button>
 </div>
 
-<!-- Screen 2 -->
+<!-- Screen 2 : ROSE GIFT MOMENT -->
 <div id="s2" class="screen">
-  <img src="rose.png">
+  <img src="rose.png" alt="A rose for you">
   <h1>This one’s for you 🌹</h1>
   <button class="primary" onclick="go(3)">Continue</button>
 </div>
@@ -114,8 +111,6 @@
 
 <!-- Final Screen -->
 <div id="s4" class="screen">
-  <img src="rose.png">
-
   <div class="letter">
 The first day,
 when our eyes found each other
