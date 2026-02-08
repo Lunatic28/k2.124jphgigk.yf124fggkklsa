@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <title>For You 🌹</title>
 
-  <!-- Handwritten-style font -->
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-
   <style>
     body {
       margin: 0;
@@ -14,7 +11,6 @@
       overflow: hidden;
       font-family: "Segoe UI", sans-serif;
 
-      /* Pastel green background */
       background: linear-gradient(
         180deg,
         #e9f5ef 0%,
@@ -70,33 +66,40 @@
       position: absolute;
     }
 
+    /* Final screen scrolling fix */
+    #s4 {
+      overflow-y: auto;
+      justify-content: flex-start;
+      padding-top: 40px;
+      padding-bottom: 60px;
+    }
+
     /* Letter card */
     .letter {
-      max-width: 540px;
-      margin: 10px auto 0;
+      max-width: 560px;
+      margin: 0 auto;
       padding: 30px 28px;
 
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 20px;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 18px;
       line-height: 1.9;
-      letter-spacing: 0.3px;
 
       color: #1b4332;
       text-align: center;
       white-space: pre-line;
 
-      background: rgba(255, 255, 255, 0.38);
+      background: rgba(255, 255, 255, 0.45);
       border-radius: 20px;
-      backdrop-filter: blur(6px);
     }
 
-    /* Rose animation */
+    /* Rose animation (ONLY after YES) */
     .rose {
-      position: absolute;
+      position: fixed;
       font-size: 26px;
-      animation: rise 6s ease-in infinite;
+      animation: rise 6s ease-in forwards;
       opacity: 0.85;
       pointer-events: none;
+      z-index: 0;
     }
 
     @keyframes rise {
@@ -108,7 +111,7 @@
         opacity: 1;
       }
       100% {
-        transform: translateY(-750px) scale(1.1);
+        transform: translateY(-800px) scale(1.1);
         opacity: 0;
       }
     }
@@ -117,7 +120,7 @@
 
 <body>
 
-<!-- Background Music -->
+<!-- Music -->
 <audio id="music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -230,7 +233,7 @@ I love you.
       rose.style.bottom = "-40px";
       document.body.appendChild(rose);
       setTimeout(() => rose.remove(), 6000);
-    }, 500);
+    }, 700);
   }
 </script>
 
